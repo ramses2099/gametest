@@ -2,6 +2,7 @@
 ---
 
 ## Project Structure
+```
 my_game/
 ├── main.lua
 ├── conf.lua
@@ -16,3 +17,4 @@ my_game/
 ├── libs/         <-- Third-party libraries (e.g. anim8, hump, STI)
 └── utils/
     └── helper.lua
+```
