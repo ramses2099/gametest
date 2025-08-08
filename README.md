@@ -1,5 +1,5 @@
 # Game Boilerplate in lua and love2d
----
+
 
 ## Project Structure
 ```
