@@ -17,10 +17,10 @@ function Game.newGame()
     -- self.world = love.physics.newWorld(0,9.81*self.PIXEL_PER_METER)
     self.world = love.physics.newWorld(0,0)
 
+    -- Assets Manager --
     self.assetsmanager = AssetsManager.assetsManager()
 
-
-    -- Projectil Pool --
+     -- Projectil Pool --
     self.projectilesPool = {}
     self.numberOfProjectiles = 10
 
@@ -61,6 +61,9 @@ function Game:update(dt)
 end
 
 function Game:draw()
+    -- draw background --
+    love.graphics.draw(self.assetsmanager.images["background"],0,0)
+
     -- draw player --
     self.player:draw()
 

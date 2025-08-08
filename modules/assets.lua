@@ -13,7 +13,7 @@ function Assets.assetsManager()
     self.sounds = {
         -- jump = love.audio.newSource("../assets/sounds/jump.wav", "static"),
     }
-    
+    return self
 end
 
 return Assets
