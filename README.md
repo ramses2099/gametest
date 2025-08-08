@@ -60,3 +60,13 @@ git push -u origin main
 🎉 Done!
 
 Your new repository on GitHub now has the contents of the original, but under a new name and your ownership.
+
+📝 Optional: Rename the local folder
+
+If you want to rename the local directory too:
+
+```
+cd ..
+mv awesome-game my-platformer
+cd my-platformer
+```
