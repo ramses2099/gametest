@@ -19,13 +19,24 @@ function Player.newPlayer(game)
     return self
 end
 
+function Player:shoot()
+    local projectile = self.game:getProjectile()
+    
+    if projectile then
+        local x, y = self.body:getPosition()
+        x = x + self.width * 0.5
+        projectile:start(x, y)
+    end
+end
+
+
 function Player:keyinput(key)
     if key == "right" then
         self.body:applyForce(400,0)
     elseif key == "left" then
         self.body:applyForce(-400,0)
     elseif key == "space" then     
-        -- self:shoot()
+        self:shoot()
     end
 end
 
