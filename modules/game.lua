@@ -2,7 +2,8 @@
 -- Game module
 --==========================================
 local Player = require("modules.player")
-
+local Utils = require("utils.helper")
+local AssetsManager = require("modules.assets")
 
 local Game = {}
 Game.__index = Game
@@ -14,6 +15,8 @@ function Game.newGame()
     love.physics.setMeter(self.PIXEL_PER_METER)
     -- self.world = love.physics.newWorld(0,9.81*self.PIXEL_PER_METER)
     self.world = love.physics.newWorld(0,0)
+
+    self.assetsmanager = AssetsManager.assetsManager()
 
     -- player --
     self.player = Player.newPlayer(self)
