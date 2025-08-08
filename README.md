@@ -24,6 +24,7 @@ Clone an existing GitHub repo (e.g., game_boilerplate)
 Push it as a new repository with a different name (e.g., my-platformer)
 
 ✅ Step-by-Step Instructions
+
 🧱 1. Clone the original repository
 
 ```
