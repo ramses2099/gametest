@@ -53,7 +53,6 @@ function Game:update(dt)
     -- update player --
     self.player:update(dt)
 
-
     --#region PROJECTILE
     for i = 1, #self.projectilesPool, 1 do
         self.projectilesPool[i]:update(dt)        

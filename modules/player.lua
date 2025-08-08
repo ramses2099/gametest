@@ -32,16 +32,20 @@ end
 
 function Player:keyinput(key)
     if key == "right" then
-        self.body:applyForce(400,0)
+        self.body:applyForce(600,0)
     elseif key == "left" then
-        self.body:applyForce(-400,0)
+        self.body:applyForce(-600,0)
     elseif key == "space" then     
         self:shoot()
     end
 end
 
 function Player:update( dt )
-        
+    if (self.body:getX() <= -self.width/2) then
+        self.body:setPosition((-self.width/2),(W_HEIGHT- 64))
+    elseif(self.body:getX() >= W_WIDTH - self.width/2) then
+        self.body:setPosition((W_WIDTH -self.width/2),(W_HEIGHT- 64))
+    end        
 end
 
 function Player:draw()
