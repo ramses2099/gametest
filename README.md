@@ -67,6 +67,6 @@ If you want to rename the local directory too:
 
 ```
 cd ..
-mv awesome-game my-platformer
+mv game_boilerplate my-platformer
 cd my-platformer
 ```
