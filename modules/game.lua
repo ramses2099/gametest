@@ -3,8 +3,10 @@
 --==========================================
 local Player = require("modules.player")
 local Projectile = require("modules.projectile")
-local Utils = require("utils.helper")
+local Wave = require("modules.wave")
 local AssetsManager = require("modules.assets")
+local Utils = require("utils.helper")
+
 
 local Game = {}
 Game.__index = Game
@@ -23,6 +25,13 @@ function Game.newGame()
      -- Projectil Pool --
     self.projectilesPool = {}
     self.numberOfProjectiles = 10
+
+    self.columns = 3
+    self.rows = 3
+    self.enemySize = 64
+
+    self.waves = {}
+    self.waves[#self.waves+1] = Wave.newWave(self)
 
     -- player --
     self.player = Player.newPlayer(self)
@@ -58,6 +67,14 @@ function Game:update(dt)
         self.projectilesPool[i]:update(dt)        
     end
     --#endregion
+
+
+    --#region WAVES
+    for i = 1, #self.waves, 1 do
+        self.waves[i]:update(dt)        
+    end
+    --#endregion
+
 end
 
 function Game:draw()
@@ -70,6 +87,12 @@ function Game:draw()
     --#region PROJECTILE
     for i = 1, #self.projectilesPool, 1 do
         self.projectilesPool[i]:draw()        
+    end
+    --#endregion
+
+    --#region WAVES
+    for i = 1, #self.waves, 1 do
+        self.waves[i]:draw()        
     end
     --#endregion
 end

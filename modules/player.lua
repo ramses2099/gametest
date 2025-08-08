@@ -49,7 +49,7 @@ function Player:update( dt )
 end
 
 function Player:draw()
-  love.graphics.setColor(0.28, 0.63, 0.05)
+  love.graphics.setColor(1, 1, 1, 1)
   love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
 end
 
