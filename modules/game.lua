@@ -2,6 +2,7 @@
 -- Game module
 --==========================================
 local Player = require("modules.player")
+local HealthBar = require("modules.healthbar")
 local Utils = require("utils.helper")
 local AssetsManager = require("modules.assets")
 
@@ -27,7 +28,7 @@ function Game.newGame()
     -- draw ui
     self.score = 0
     self.gameTime = 0
-    
+    self.healthbar = HealthBar.newHealthBar(10, 40)
 
     self.currentState = GameState.MENU
 
@@ -59,6 +60,9 @@ function Game:draw()
         love.graphics.printf("Arrow keys or WASD to move, SPACE to jump", 0, W_HEIGHT/2 + 20, W_WIDTH, "center")
     
     elseif self.currentState == GameState.PLAYING or self.currentState == GameState.PAUSED then
+        -- UI draw --
+        self.healthbar:draw()
+      
         -- draw player --
         self.player:draw()
 
