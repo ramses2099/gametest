@@ -24,6 +24,11 @@ function Game.newGame()
     -- self.world = love.physics.newWorld(0,9.81*self.PIXEL_PER_METER)
     self.world = love.physics.newWorld(0,0)
 
+    -- draw ui
+    self.score = 0
+    self.gameTime = 0
+    
+
     self.currentState = GameState.MENU
 
     self.assetsmanager = AssetsManager.assetsManager()
@@ -37,6 +42,7 @@ end
 function Game:update(dt)
     --#region PLAYING STATE 
     if self.currentState == GameState.PLAYING then
+        self.gameTime = self.gameTime + dt
         -- physics --
         self.world:update(dt)
         -- update player --
@@ -65,12 +71,11 @@ function Game:draw()
         end
     elseif self.currentState == GameState.GAME_OVER then
         love.graphics.setColor(1, 0, 0)
-        love.graphics.printf("GAME OVER", 0, W_HEIGHT/2 - 40, W_WIDTH, "center")
-        
-        -- love.graphics.setColor(1, 1, 1)
-        -- love.graphics.printf("Final Score: " .. score, 0, W_HEIGHT/2, W_WIDTH, "center")
-        -- love.graphics.printf("Time Survived: " .. string.format("%.1f", gameTime) .. "s", 0, W_HEIGHT/2 + 20, W_WIDTH, "center")
-        -- love.graphics.printf("Press R to restart or ESC to menu", 0, W_HEIGHT/2 + 50, W_WIDTH, "center")
+        love.graphics.printf("GAME OVER", 0, W_HEIGHT/2 - 40, W_WIDTH, "center")        
+        love.graphics.setColor(1, 1, 1)
+        love.graphics.printf("Final Score: " .. self.score, 0, W_HEIGHT/2, W_WIDTH, "center")
+        love.graphics.printf("Time Survived: " .. string.format("%.1f", self.gameTime) .. "s", 0, W_HEIGHT/2 + 20, W_WIDTH, "center")
+        love.graphics.printf("Press R to restart or ESC to menu", 0, W_HEIGHT/2 + 50, W_WIDTH, "center")
     end
     
 end
@@ -80,6 +85,8 @@ function Game:keypressed(key)
         if key == "space" then
             self.currentState = GameState.PLAYING
             -- Reset game state 
+            self.score = 0
+            self.gameTime = 0
         elseif key =="escape" then
             love.event.quit()
         end
@@ -87,7 +94,9 @@ function Game:keypressed(key)
         if key == "p" then
             self.currentState = GameState.PAUSED
         elseif key =="escape" then
-            self.currentState = GameState.MENU        
+            self.currentState = GameState.MENU
+        elseif key =="g" then
+            self.currentState = GameState.GAME_OVER
         end
         self.player:keyinput(key)
     elseif self.currentState == GameState.PAUSED then

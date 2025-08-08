@@ -5,6 +5,7 @@ function Player.newPlayer(game)
     local self = setmetatable({}, Player)
     self.tag = "Player"
     self.game = game
+    self.health = 100
     self.width = 64
     self.height = 64
     self.x = (W_WIDTH * 0.5 - 64/2)
