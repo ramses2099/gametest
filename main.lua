@@ -1,10 +1,12 @@
 _G.love = require("love")
+local Game = require("modules.game")
 _G.W_WIDTH = 600
 _G.W_HEIGHT = 800
 _G.DEBUG = true
 
 function love.load()
   -- Load assets, initialize game state
+  p = Game.Player.newPlayer()
 end
 
 function love.update(dt)
