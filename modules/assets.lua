@@ -13,6 +13,9 @@ function Assets.assetsManager()
     self.sounds = {
         -- jump = love.audio.newSource("../assets/sounds/jump.wav", "static"),
     }
+    self.font = {
+        default = love.graphics.newFont("assets/fonts/Bangers-Regular.ttf", 16)
+    }
     return self
 end
 
