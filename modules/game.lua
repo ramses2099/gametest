@@ -5,6 +5,7 @@ local Player = require("modules.player")
 local HealthBar = require("modules.healthbar")
 local Utils = require("utils.helper")
 local AssetsManager = require("modules.assets")
+local Colors = require("utils.colors")
 
 local Game = {}
 Game.__index = Game
@@ -54,7 +55,8 @@ end
 
 function Game:draw()
     if self.currentState == GameState.MENU then
-        love.graphics.setColor(1, 1, 1)
+        --love.graphics.setColor(1, 1, 1)
+        love.graphics.setColor(Colors.GOLD)
         love.graphics.printf("2D Game Programming Example", 0, W_HEIGHT/2 - 60, W_WIDTH, "center")
         love.graphics.printf("Press SPACE to start", 0, W_HEIGHT/2 - 20, W_WIDTH, "center")
         love.graphics.printf("Arrow keys or WASD to move, SPACE to jump", 0, W_HEIGHT/2 + 20, W_WIDTH, "center")
