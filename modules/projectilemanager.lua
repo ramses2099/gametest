@@ -1,3 +1,5 @@
+local EffectManager = require("modules.effectmanager")
+
 local ProjectileManager = {}
 ProjectileManager.__index = ProjectileManager
 
@@ -59,7 +61,7 @@ function ProjectileManager:update(dt, targets)
                     else
                         -- direct damage
                         target.health = target.health - proj.damage
-                        --EffectManager
+                        EffectManager:addImpact(proj.x, proj.y)
                     end
                     
                     hit = true
@@ -80,6 +82,7 @@ end
 
 function ProjectileManager:explode(x, y, radius, damage, targets)
     --EffectManager
+    EffectManager:addImpact(x, y)
 
     -- Damage all targets in range
     for _, target in ipairs(targets) do
