@@ -1,5 +1,6 @@
 _G.love = require("love")
 local Game = require("modules.game")
+local Colors = require("utils.colors")
 
 _G.W_WIDTH = 600
 _G.W_HEIGHT = 800
@@ -20,7 +21,8 @@ function love.draw()
   -- Render everything
    -- Display FPS
   if DEBUG then
-    love.graphics.setColor(1, 1, 1, 1) -- White
+    local r,g,b = Colors["white"][0]
+    love.graphics.setColor(r,g,b,1) -- White
     love.graphics.print("FPS: " .. love.timer.getFPS(), 10, 10)
   end
   -- draw --
